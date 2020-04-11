@@ -6,7 +6,7 @@ export function useCollapsibleNav({ selector }) {
   const isTabletOrMobile = useMedia({ maxWidth: 768 });
 
   const styleCollapsed = {
-    height: "4.5em",
+    height: "4em",
   };
 
   function getBaseStyle(isTabletOrMobile) {

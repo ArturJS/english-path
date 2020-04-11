@@ -25,7 +25,7 @@ export default function Layout({ children }) {
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
       <main className="flex justify-center flex-grow">{children}</main>
-      <footer className="text-center bg-indigo-800 text-gray-300 font-semibold py-8">
+      <footer className="text-center bg-indigo-800 text-gray-300 font-semibold py-4">
         English path © {new Date().getFullYear()}
       </footer>
     </>

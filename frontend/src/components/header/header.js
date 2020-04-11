@@ -12,7 +12,7 @@ export default function Header({ siteTitle }) {
     <header className="layout-header">
       <nav
         style={navCollapsibleStyle}
-        className="layout-header-nav flex items-center justify-between flex-wrap bg-teal-500 p-6">
+        className="layout-header-nav flex items-center justify-between flex-wrap bg-indigo-800 p-4">
         <Link to="/">
           <div className="flex items-center flex-shrink-0 text-white mr-6">
             <svg
@@ -54,7 +54,7 @@ export default function Header({ siteTitle }) {
             </a>
           </div>
           <div>
-            <a className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+            <a className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 md:mt-0">
               Sign in
             </a>
           </div>
