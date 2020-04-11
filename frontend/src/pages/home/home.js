@@ -20,7 +20,7 @@ export default function HomePage() {
         <Link
           to="/page-2/"
           className="mt-5 mb-5 block text-center bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded shadow-md">
-          Go to page 2
+          Next
         </Link>
       </section>
     </Layout>
