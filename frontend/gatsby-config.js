@@ -8,9 +8,17 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-alias-imports`,
+      options: {
+        aliases: {
+          "~": `src/`,
+        },
+      },
+    },
+    {
       resolve: `gatsby-plugin-sass`,
       options: {
-        postCssPlugins: [require('tailwindcss')],
+        postCssPlugins: [require("tailwindcss")],
       },
     },
     `gatsby-plugin-react-helmet`,
@@ -39,4 +47,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
