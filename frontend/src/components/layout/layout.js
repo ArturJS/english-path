@@ -24,15 +24,10 @@ export default function Layout({ children }) {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}>
-        <main className="flex justify-center">{children}</main>
-        <footer>© {new Date().getFullYear()}</footer>
-      </div>
+      <main className="flex justify-center flex-grow">{children}</main>
+      <footer className="text-center bg-indigo-800 text-gray-300 font-semibold py-8">
+        English path © {new Date().getFullYear()}
+      </footer>
     </>
   );
 }

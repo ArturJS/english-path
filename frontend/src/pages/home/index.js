@@ -8,10 +8,12 @@ export default function IndexPage() {
     <Layout>
       <SEO title="Home" />
       <section className="container max-w-sm">
-        <h1>English path</h1>
-        <p>Welcome to your English learning beginning.</p>
+        <h1 className="text-center">
+          English knowledge right on your fingertips
+        </h1>
+        <p>Ready?) Let's get started!</p>
 
-        <article className="max-w-sm mx-auto flex p-6 bg-white rounded-lg shadow-xl">
+        <article className="max-w-sm mx-auto flex p-6 bg-white rounded-sm shadow-xl">
           <div className="flex-shrink-0">
             <div className="ml-6 pt-1">
               <h4 className="text-xl text-gray-900 leading-tight">ChitChat</h4>
@@ -21,9 +23,13 @@ export default function IndexPage() {
             </div>
           </div>
         </article>
-      </section>
 
-      <Link to="/page-2/">Go to page 2</Link>
+        <Link
+          to="/page-2/"
+          className="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
+          Go to page 2
+        </Link>
+      </section>
     </Layout>
   );
 }
