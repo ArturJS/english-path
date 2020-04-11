@@ -1,36 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import PropTypes from "prop-types";
-import useMedia from "use-media";
 import { Link } from "gatsby";
-
-function useCollapsibleNav({ selector }) {
-  const [isCollapsed, setCollapsed] = useState(true);
-  const isTabletOrMobile = useMedia({ maxWidth: 768 });
-
-  function getBaseStyle(isTabletOrMobile) {
-    const height = document.querySelector(selector)?.scrollHeight;
-
-    return {
-      overflow: "hidden",
-      transition: "height ease-in-out 0.25s",
-      height: isTabletOrMobile ? `${height}px` : "auto",
-    };
-  }
-
-  const styleCollapsed = {
-    height: "4.5em",
-  };
-  const navCollapsibleStyle =
-    isTabletOrMobile && isCollapsed
-      ? { ...getBaseStyle(), ...styleCollapsed }
-      : getBaseStyle(isTabletOrMobile);
-
-  function toggleCollapsed() {
-    setCollapsed(!isCollapsed);
-  }
-
-  return [navCollapsibleStyle, toggleCollapsed];
-}
+import { useCollapsibleNav } from "./hooks";
 
 export default function Header({ siteTitle }) {
   const [navCollapsibleStyle, toggleCollapsed] = useCollapsibleNav({
@@ -83,9 +54,7 @@ export default function Header({ siteTitle }) {
             </a>
           </div>
           <div>
-            <a
-              href="#"
-              className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
+            <a className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0">
               Sign in
             </a>
           </div>
