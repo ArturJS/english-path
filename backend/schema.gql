@@ -3,8 +3,25 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+"""Login Input"""
+input LoginInput {
+  email: String!
+  password: String!
+}
+
+type LoginResponse {
+  message: String
+  user: User
+}
+
+type Mutation {
+  login(loginInput: LoginInput!): LoginResponse!
+  logout: Int!
+}
+
 type Query {
   users: [User!]!
+  whoAmI: User!
 }
 
 type User {
