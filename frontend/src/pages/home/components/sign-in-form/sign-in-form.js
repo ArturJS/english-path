@@ -1,8 +1,17 @@
 import React from "react";
+import { useQuery } from "~/models/reactUtils";
 
 export default function SignInForm() {
+  const { data, error } = useQuery(store => store.queryWhoAmI());
+  if (error) return <div>{JSON.stringify(error, null, 4)}</div>;
+
+
+
   return (
     <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+      <pre>
+        {JSON.stringify(data, null, 4)}
+      </pre>
       <div className="mb-4">
         <label
           className="block text-gray-700 text-sm font-bold mb-2"

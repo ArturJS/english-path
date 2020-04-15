@@ -5,6 +5,7 @@ module.exports = {
     author: `@ArturJS`,
   },
   plugins: [
+    `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-alias-imports`,
       options: {
