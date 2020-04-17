@@ -1,5 +1,5 @@
 import { Query, Resolver, Mutation, Args, Context } from '@nestjs/graphql';
-import { UseGuards } from '@nestjs/common';
+import { UseGuards, UnauthorizedException } from '@nestjs/common';
 import { Field, ObjectType, InputType, Int } from 'type-graphql';
 import { Request, Response } from 'express';
 import { GqlAuthGuard } from '../common/guards/gql-auth.guard';
@@ -16,13 +16,12 @@ export interface ResolverContext {
 @ObjectType()
 export class LoginResponse {
   @Field({ nullable: true })
-  message: string;
-
-  @Field({ nullable: true })
   user: User;
 
-  constructor({message, user}: {message?: string, user?: User}) {
-    this.message = message;
+  @Field({ nullable: true })
+  message: string;
+
+  constructor({ user }: { user?: User }) {
     this.user = user;
   }
 }
@@ -71,9 +70,7 @@ export class UsersResolver {
     const user = await this.usersService.findOne({email: loginInput.email});
 
     if (!user) {
-      return new LoginResponse({
-        message: "Wrong email or password"
-      });
+      throw new UnauthorizedException("Wrong email or password")
     }
   
     ctx.req.login(user, () => {});
