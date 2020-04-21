@@ -5,7 +5,10 @@ import { RootStore as BaseRootStore } from "~/models/RootStore";
 import { AuthStore } from "~/features/auth";
 
 const env = {
-  gqlHttpClient: createHttpClient("http://localhost:3000/graphql"),
+  gqlHttpClient: createHttpClient("http://localhost:3000/graphql", {
+    credentials: "include",
+    mode: "cors",
+  }),
 };
 
 const RootStore = t
