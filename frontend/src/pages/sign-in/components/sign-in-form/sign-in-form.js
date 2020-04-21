@@ -1,12 +1,12 @@
-import React, { useContext, useState } from "react";
-import { StoreContext } from "~/models/reactUtils";
+import React, { useState } from "react";
+import { useStore } from "~/features/store";
 import SignInFormBase from "./sign-in-form-base";
 
 export default function SignInForm() {
-  const store = useContext(StoreContext);
+  const store = useStore();
   const [error, setError] = useState(null);
   const onSubmit = data => {
-    store
+    store.base
       .mutateLogin({
         loginInput: {
           email: data.email,

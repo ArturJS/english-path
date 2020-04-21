@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "gatsby";
-import Layout from "~/components/layout";
 import SEO from "~/components/seo";
 
-export default function SecondPage() {
+export default function WelcomePage() {
   return (
-    <Layout>
+    <>
       <SEO title="Page two" />
       <div className="flex flex-col justify-center self-center max-w-screen-md">
-        <h1 className="mt-10">Hi from the second page</h1>
-        <p className="text-center text-xl">Welcome to page 2</p>
+        <h1 className="mt-10">English path</h1>
+        <p className="text-center text-xl">Welcome to our platform!</p>
         <Link
           to="/"
           className="mt-5 mb-5 block text-center bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded shadow-md">
@@ -42,6 +41,6 @@ export default function SecondPage() {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 }
