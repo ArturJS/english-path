@@ -1,12 +1,11 @@
 import React from "react";
 import { Link } from "gatsby";
-import Layout from "~/components/layout";
 import SEO from "~/components/seo";
 import SignInForm from "./components/sign-in-form";
 
-export default function HomePage() {
+export default function SignInPage() {
   return (
-    <Layout>
+    <>
       <SEO title="Home" />
       <section className="container max-w-sm">
         <h1 className="text-center mt-10">
@@ -18,11 +17,11 @@ export default function HomePage() {
         <SignInForm />
 
         <Link
-          to="/page-2/"
+          to="/profile/"
           className="mt-5 mb-5 block text-center bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 rounded shadow-md">
           Next
         </Link>
       </section>
-    </Layout>
+    </>
   );
 }

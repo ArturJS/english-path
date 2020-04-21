@@ -5,6 +5,12 @@ module.exports = {
     author: `@ArturJS`,
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/layout`),
+      },
+    },
     `gatsby-plugin-typescript`,
     {
       resolve: `gatsby-alias-imports`,

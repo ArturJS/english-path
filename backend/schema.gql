@@ -10,8 +10,8 @@ input LoginInput {
 }
 
 type LoginResponse {
-  message: String
   user: User
+  message: String
 }
 
 type Mutation {

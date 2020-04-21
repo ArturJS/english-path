@@ -17,7 +17,7 @@ exports.createPages = ({ actions, graphql }) => {
         fromPath: `/`,
         isPermanent: true,
         redirectInBrowser: true,
-        toPath: `/home`,
+        toPath: `/welcome`,
       },
     ],
   });

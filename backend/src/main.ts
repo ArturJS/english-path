@@ -1,4 +1,3 @@
-import * as cookieParser from 'cookie-parser';
 import * as cookieSession from 'cookie-session';
 import * as passport from 'passport';
 import { Strategy } from 'passport-local';
@@ -30,12 +29,15 @@ function initPassport(app) {
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
-  // app.use(cookieParser());
+  app.enableCors({
+    credentials: true,
+    origin: 'http://localhost:8000'
+  });
+
   app.use(
     cookieSession({
       name: 'session',
-      signed: false,
-      // keys: ['session secret'],
+      keys: ['session secret'],
       saveUninitialized: false,
       // Cookie Options
       resave: false,
