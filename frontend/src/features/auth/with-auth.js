@@ -1,24 +1,26 @@
 import React from "react";
 import { useLocation, redirectTo } from "@reach/router";
-import { observer } from "mobx-react-lite";
+import { useObserver } from "mobx-react-lite";
 import { useStore } from "~/features/store";
 
 export function withAuth(WrappedComponent) {
-  return observer(function AuthRoute(props) {
-    const { pathname } = useLocation();
-    const store = useStore();
-    const { isInitialized, isLoggedIn } = store.auth;
+  return function AuthRoute(props) {
+    return useObserver(() => {
+      const { pathname } = useLocation();
+      const store = useStore();
+      const { isInitialized, isLoggedIn } = store.auth;
 
-    if (!isInitialized) {
-      return <div>Loading...</div>;
-    }
+      if (!isInitialized) {
+        return <div>Loading...</div>;
+      }
 
-    if (!isLoggedIn && pathname !== `/sign-in`) {
-      redirectTo("/sign-in");
+      if (!isLoggedIn && pathname !== `/sign-in`) {
+        redirectTo("/sign-in");
 
-      return null;
-    }
+        return null;
+      }
 
-    return <WrappedComponent {...props} />;
-  });
+      return <WrappedComponent {...props} />;
+    });
+  };
 }

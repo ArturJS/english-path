@@ -7,7 +7,8 @@ function createRedirects({ createRedirect, redirects }) {
 }
 
 // see also https://github.com/gatsbyjs/gatsby/blob/master/examples/using-redirects/gatsby-node.js
-exports.createPages = ({ actions, graphql }) => {
+exports.createPages = params => {
+  const { actions } = params;
   const { createRedirect } = actions;
 
   createRedirects({
