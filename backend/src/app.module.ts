@@ -1,13 +1,16 @@
+import { resolve } from 'path';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { ServeStaticModule } from '@nestjs/serve-static';
 import { UsersResolver } from './users/users.resolver';
 import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: resolve(__dirname, '../../frontend/public')
+    }),
     GraphQLModule.forRoot({
       installSubscriptionHandlers: true,
       autoSchemaFile: 'schema.gql',
@@ -23,7 +26,6 @@ import { UsersModule } from './users/users.module';
     AuthModule,
     UsersModule,
   ],
-  controllers: [AppController],
-  providers: [AppService, UsersResolver],
+  providers: [UsersResolver],
 })
 export class AppModule {}
