@@ -1,6 +1,8 @@
 import { useState } from "react";
 import useMedia from "use-media";
 
+const isSSR = typeof window === "undefined";
+
 export function useCollapsibleNav({ selector }) {
   const [isCollapsed, setCollapsed] = useState(true);
   const isTabletOrMobile = useMedia({ maxWidth: 768 });
@@ -10,8 +12,9 @@ export function useCollapsibleNav({ selector }) {
   };
 
   function getBaseStyle(isTabletOrMobile) {
-    const height =
-      document.querySelector(selector)?.scrollHeight || styleCollapsed.height;
+    const height = isSSR
+      ? styleCollapsed.height
+      : document.querySelector(selector)?.scrollHeight || styleCollapsed.height;
 
     return {
       overflow: "hidden",
