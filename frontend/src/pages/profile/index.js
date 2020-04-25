@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "gatsby";
 import SEO from "~/components/seo";
 import { withAuth } from "~/features/auth";
+// there must be at least 1 image in gatsby project
+// https://github.com/gatsbyjs/gatsby/issues/15344#issuecomment-508242874
+// import imageCardTop from "~/images/card-top.png";
 
 export default withAuth(function ProfilePage() {
   return (
@@ -16,11 +19,11 @@ export default withAuth(function ProfilePage() {
           Go back to home
         </Link>
         <div className="max-w-sm rounded overflow-hidden shadow-lg mb-5 self-center">
-          <img
+          {/* <img
             className="w-full"
-            src="https://tailwindcss.com/img/card-top.jpg"
+            src={imageCardTop}
             alt="Sunset in the mountains"
-          />
+          /> */}
           <div className="px-6 py-4">
             <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
             <p className="text-gray-700 text-base">

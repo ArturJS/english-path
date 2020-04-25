@@ -73,7 +73,7 @@ export class UsersResolver {
       throw new UnauthorizedException("Wrong email or password")
     }
   
-    ctx.req.login(user, () => {});
+    (ctx.req as any).login(user, () => {});
   
     return new LoginResponse({
       user
@@ -84,7 +84,7 @@ export class UsersResolver {
   async logout(
     @Context() ctx: ResolverContext,
   ): Promise<number> {  
-    ctx.req.logout();
+    (ctx.req as any).logout();
     return 0;
   }
 }
