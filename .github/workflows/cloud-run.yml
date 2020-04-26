@@ -1,9 +1,10 @@
 name: Build and Deploy to Google Cloud Run
 
-# on:
-#   push:
-#     branches:
-#     - master
+on:
+  push:
+    branches:
+    - docker
+    - master
 
 env:
   PROJECT_ID: ${{ secrets.GCLOUD_PROJECT_ID }}
