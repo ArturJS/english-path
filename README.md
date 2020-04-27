@@ -3,7 +3,7 @@ The spaced repetition app for English learning.
 
 ## ToDo by features:
 - [x] add auth guards for auth protected pages
-- [ ] deploy this very first version of the app
+- [x] deploy this very first version of the app
 - [ ] add sign-up page
 - [ ] add an ability to restore auth credentials with email
 - [ ] create the basis for database structure (I'll send it later since we need to discuss it beforehand in order to avoid critical mistakes as later it would be quite expensive to fix it)
