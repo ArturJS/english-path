@@ -4,8 +4,13 @@ import { createHttpClient } from "mst-gql";
 import { RootStore as BaseRootStore } from "~/models/RootStore";
 import { AuthStore } from "~/features/auth";
 
+const HTTP_CLIENT_URL =
+  process.env.NODE_ENV === "production"
+    ? `/graphql`
+    : "http://localhost:3000/graphql";
+
 const env = {
-  gqlHttpClient: createHttpClient("http://localhost:3000/graphql", {
+  gqlHttpClient: createHttpClient(HTTP_CLIENT_URL, {
     credentials: "include",
     mode: "cors",
   }),
