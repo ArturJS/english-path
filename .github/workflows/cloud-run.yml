@@ -2,8 +2,6 @@ name: Build and Deploy to Google Cloud Run
 
 on:
   push:
-    branches:
-      - master
     tags:
       - v**
 
