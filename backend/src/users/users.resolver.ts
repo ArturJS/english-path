@@ -12,7 +12,6 @@ export interface ResolverContext {
   res: Response;
 }
 
-
 @ObjectType()
 export class LoginResponse {
   @Field({ nullable: true })
@@ -26,7 +25,6 @@ export class LoginResponse {
   }
 }
 
-
 @InputType({ description: 'Login Input' })
 export class LoginInput implements Partial<User> {
   @Field()
@@ -38,21 +36,19 @@ export class LoginInput implements Partial<User> {
 
 @Resolver()
 export class UsersResolver {
-  constructor(
-    private usersService: UsersService,
-  ) {}
+  constructor(private usersService: UsersService) {}
 
-  @Query((returns) => [User])
+  @Query(returns => [User])
   async users(): Promise<Array<Object>> {
     return [
-        {
-            id: 1,
-            email: 'user1@mail.com'
-        },
-        {
-            id: 2,
-            email: 'user2@mail.com'
-        }
+      {
+        id: 1,
+        email: 'user1@mail.com',
+      },
+      {
+        id: 2,
+        email: 'user2@mail.com',
+      },
     ];
   }
 
@@ -67,28 +63,25 @@ export class UsersResolver {
     @Args('loginInput') loginInput: LoginInput,
     @Context() ctx: ResolverContext,
   ): Promise<LoginResponse> {
-    const user = await this.usersService.findOne({email: loginInput.email});
+    const user = await this.usersService.findOne({ email: loginInput.email });
 
     if (!user) {
-      throw new UnauthorizedException("Wrong email or password")
+      throw new UnauthorizedException('Wrong email or password');
     }
-  
+
     (ctx.req as any).login(user, () => {});
-  
+
     return new LoginResponse({
-      user
+      user,
     });
   }
 
   @Mutation(() => Int)
-  async logout(
-    @Context() ctx: ResolverContext,
-  ): Promise<number> {  
+  async logout(@Context() ctx: ResolverContext): Promise<number> {
     (ctx.req as any).logout();
     return 0;
   }
 }
-
 
 // Examples:
 

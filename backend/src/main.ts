@@ -1,9 +1,10 @@
+import 'reflect-metadata';
+import * as http from 'http';
 import * as cookieSession from 'cookie-session';
 import * as passport from 'passport';
 import { Strategy } from 'passport-local';
 import { NestFactory } from '@nestjs/core';
 import { INestApplication } from '@nestjs/common';
-import * as http from "http";
 import { NextApiHandler } from 'next';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
@@ -22,62 +23,48 @@ function initPassport(app) {
   passport.use(
     new Strategy(async (email, password, done) => {
       done(null, { email, password });
-    })
+    }),
   );
 
   app.use(passport.initialize());
   app.use(passport.session());
 }
 
-async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+let app: INestApplication;
 
-  app.enableCors({
-    credentials: true,
-    origin: 'http://localhost:8000'
-  });
-
-  app.use(
-    cookieSession({
-      name: 'session',
-      keys: ['session secret'],
-      saveUninitialized: false,
-      // Cookie Options
-      resave: false,
-      secure: false,
-      httpOnly: false,
-      maxAge: 24 * 60 * 60 * 1000 // 24 hours
-    }),
-  );
-
-  initPassport(app);
-
-  await app.listen(3000);
-}
-
-bootstrap();
-
-export module Backend {
-  let app: INestApplication;
-
-  export async function getApp() {
+export const Backend = {
+  async getApp() {
     if (!app) {
-      app = await NestFactory.create(
-        AppModule,
-        { bodyParser: false }
+      app = await NestFactory.create<NestExpressApplication>(AppModule, {
+        bodyParser: false,
+      });
+
+      app.use(
+        cookieSession({
+          name: 'session',
+          keys: ['session secret'],
+          saveUninitialized: false,
+          // Cookie Options
+          resave: false,
+          secure: false,
+          httpOnly: false,
+          maxAge: 24 * 60 * 60 * 1000, // 24 hours
+        }),
       );
-      app.setGlobalPrefix("api");
-  
+
+      initPassport(app);
+
+      // app.setGlobalPrefix('/api/graphql');
       await app.init();
     }
 
     return app;
-  }
+  },
 
-  export async function getListener() {
-    const app = await getApp();
+  async getListener() {
+    const app = await Backend.getApp();
     const server: http.Server = app.getHttpServer();
-    const [ listener ] = server.listeners("request") as NextApiHandler[];
+    const [listener] = server.listeners('request') as NextApiHandler[];
     return listener;
-  }
-}
+  },
+};
