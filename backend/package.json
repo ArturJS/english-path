@@ -22,7 +22,7 @@
     "postinstall": "node ./tasks/fix-node-modules.js"
   },
   "dependencies": {
-    "@nestjs/common": "^6.7.2",
+    "@nestjs/common": "^9.3.9",
     "@nestjs/core": "^9.0.5",
     "@nestjs/graphql": "^6.5.3",
     "@nestjs/jwt": "^10.0.1",
