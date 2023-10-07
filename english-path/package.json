@@ -32,7 +32,7 @@
     "passport": "^0.6.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
-    "postcss": "^8.2.13",
+    "postcss": "^8.4.31",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "reflect-metadata": "^0.1.13",
