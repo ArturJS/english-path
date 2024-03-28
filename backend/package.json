@@ -27,7 +27,7 @@
     "@nestjs/graphql": "^11.0.4",
     "@nestjs/jwt": "^10.0.1",
     "@nestjs/passport": "^6.2.0",
-    "@nestjs/platform-express": "^9.2.1",
+    "@nestjs/platform-express": "^10.3.7",
     "@nestjs/serve-static": "^2.1.0",
     "apollo-server-express": "^2.14.2",
     "cookie-parser": "^1.4.5",
