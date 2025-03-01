@@ -18,7 +18,7 @@
     "@nestjs/microservices": "^7.6.3",
     "@nestjs/passport": "^6.2.0",
     "@nestjs/platform-express": "^10.3.7",
-    "@nestjs/serve-static": "^4.0.2",
+    "@nestjs/serve-static": "^5.0.3",
     "apollo-server-express": "^2.14.2",
     "autoprefixer": "^10.1.0",
     "babel-plugin-transform-typescript-metadata": "^0.3.1",
